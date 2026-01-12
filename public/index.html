@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 Todo PWA</title>
+    <link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Todo PWA</h1>
+            <p class="subtitle">Ваш оффлайн-менеджер задач</p>
+        </header>
+
+        <main>
+            <section class="add-todo">
+                <form id="todo-form">
+                    <input 
+                        type="text" 
+                        id="todo-input" 
+                        placeholder="Что нужно сделать?" 
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit" id="add-btn">➕ Добавить</button>
+                </form>
+            </section>
+
+            <section class="filters">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="active">Активные</button>
+                    <button class="filter-btn" data-filter="completed">Выполненные</button>
+                </div>
+                <div class="stats">
+                    <span id="counter">Задач: 0</span>
+                    <button id="clear-completed" class="secondary-btn">Очистить выполненные</button>
+                </div>
+            </section>
+
+            <section class="todo-list">
+                <ul id="todos-container">
+                    <!-- Задачи будут здесь -->
+                </ul>
+                <p id="empty-message">🎉 Пока нет задач! Добавьте первую.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p class="footer-text">
+                ⚡ PWA • Работает оффлайн • 
+                <button id="install-btn" class="install-btn">📲 Установить</button>
+            </p>
+        </footer>
+    </div>
+
+    <script src="/src/app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('✅ Service Worker зарегистрирован'))
+                .catch(err => console.log('❌ Ошибка:', err));
+        }
+    </script>
+</body>
+</html>

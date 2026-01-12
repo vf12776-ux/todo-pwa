@@ -1,0 +1,12 @@
+{
+  "name": "todo-pwa",
+  "version": "1.0.0",
+  "description": "Progressive Web App для управления задачами",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "live-server public"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
