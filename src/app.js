@@ -127,5 +127,18 @@ class TodoApp {
         });
     }
 }
+const installBtn = document.getElementById('install-btn');
+if (installBtn) {
+    installBtn.style.display = 'none';
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        installBtn.style.display = 'block';
+        
+        installBtn.addEventListener('click', () => {
+            e.prompt();
+        });
+    });
+}
 
 const app = new TodoApp();
